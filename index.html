@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ACE BUILD</title>
+  <link rel="icon" type="image/png" href="your-logo.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="logo.jpeg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <style>
+    body {
+      background-color: #e0e0e0;
+      font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+      background-color: #000000;
+    }
+
+    .hero-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 50px 20px;
+    }
+
+    .hero-text {
+      flex: 1;
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .hero-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    .img_color {
+  filter: grayscale(100%);
+  transition: filter 0.5s ease;
+}
+
+.img_color:hover {
+  filter: grayscale(0%);
+}
+
+    .btn-dark-rounded {
+      background-color: black;
+      color: white;
+      border-radius: 50px;
+      margin-right: 3%;
+      padding: 9px 25px;
+      border: none;
+    }
+
+    .btn-dark-rounded_2 {
+      background-color: black;
+      color: white;
+      border-radius: 0px;
+      margin-right: 3%;
+      padding: 9px 25px;
+      border: none;
+    }
+    .btn-dark-rounded_2:hover {
+      background-color: white;
+      color: black;
+    }
+
+
+    .custom-navbar {
+      transition: all 0.3s ease;
+      background-color: transparent;
+      padding: 20px 0;
+    }
+
+    .custom-navbar.scrolled {
+      background-color: rgba(94, 92, 92, 0.728) !important;
+      padding: 1px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .custom-navbar .nav-link,
+    .custom-navbar .navbar-brand {
+      transition: color 0.3s ease;
+    }
+
+    .custom-navbar.scrolled .nav-link,
+    .custom-navbar.scrolled .navbar-brand {
+      color: #000;
+    }
+
+    .carousel-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 60px; /* 👈 more space between cards */
+    width: max-content;
+  }
+
+  .carousel-card {
+    flex: 0 0 auto;
+    width: 280px;
+    background: white;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.4s ease;
+  }
+
+  .carousel-card img {
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  .carousel-card h5 {
+    margin: 10px 0 5px 0;
+  }
+
+  .carousel-card p {
+    font-size: 14px;
+    color: gray;
+  }
+
+  .carousel-card.active {
+    transform: scale(1.3);
+    z-index: 10;
+  }
+
+
+
+ 
+
+
+  
+ 
+  
+
+
+
+
+
+.half-curved-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25vw;
+  height: 100vh;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.half-curved-shape {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.curved-overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  font-size: clamp(2rem, 3.5vw, 4rem);
+  font-family: 'Arial Black', sans-serif;
+  line-height: 1.2;
+  z-index: 3;
+}
+
+/*  Fix for Mobile: Keep full height */
+@media (max-width: 768px) {
+  .half-curved-overlay {
+    width: 50vw;
+    height: 100vh; 
+  }
+
+  .curved-overlay-text {
+    top: 50%;
+    left: 8%;
+    font-size: clamp(1.2rem, 5vw, 2rem);
+  }
+}
+
+
+
+
+
+.curved-line {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 150px;
+  z-index: 2;
+  pointer-events: none; /* ensures it doesn't block interaction */
+  stroke-dasharray: 3000;
+  stroke-dashoffset: 3000;
+  animation: draw-line 17s ease-out forwards;
+  color: #cdd9e7ce;
+}
+
+@keyframes draw-line {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Background image for the modal */
+.contact-modal-bg {
+  background-image: url('pop up.jpg'); /* replace with your image */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: white;
+  overflow: hidden;
+}
+
+.contact-modal-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.contact-modal-bg > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Rounded modal box */
+.rounded-modal {
+  border-radius: 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Slide-up animation */
+.slide-up-modal {
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 3s ease, opacity 3s ease;
+}
+
+.show .slide-up-modal {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Inner white-glass box */
+.contact-box {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  max-width: 400px;
+  width: 100%;
+}
+
+
+
+  </style>
+</head>
+<body>
+
+
+
+<!-- NAVBAR -->
+<div class="container-fluid"> 
+  <nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+    <img src="logo.jpeg" width="120px" style="margin-left: 1%;">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav me-3" style="margin-left: 10px;">
+        <li class="nav-item"><a class="nav-link" href="index.html" style="color: rgb(244, 244, 244);">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html" style="color: rgb(244, 244, 244);">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html" style="color: rgb(244, 244, 244);">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="projects.html"style="color: rgb(244, 244, 244);">Recently Completed Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="Contact.html" style="color: rgb(244, 244, 244);">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  
+
+  <!-- HERO VIDEO SECTION -->
+<div class="row g-0">
+  <div class="col-12">
+    <div class="position-relative overflow-hidden" style="height: 100vh;">
+      <video autoplay muted loop playsinline class="w-100 h-100 object-fit-cover position-absolute top-0 start-0">
+        <source src="video 1.mp4" type="video/mp4" >
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="position-absolute top-50 start-50 translate-middle text-center text-white" style="z-index: 1;">
+        <h1 class="display-4 fw-bold">Sydney's Premier Luxury<br> Building Specialist</h1>
+        <p class="lead">Where genius meets construction</p>
+        <a href="about.html"><button class="btn btn-dark-rounded mt-3">About Us</button></a>
+      </div>
+  
+
+
+     <!--  This is for the image on the video place 
+
+         .hero-portrait-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-bg-blur {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(20px) brightness(0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.hero-center-img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+    
+
+     
+     <div class="row g-0">
+        <div class = "col-12">
+      <div class="hero-portrait-wrapper">
+  <img class="hero-bg-blur" src="3.jpg" alt="bg" />
+  <img class="hero-center-img" src="3.jpg" alt="main" />
+</div>
+</div>
+</div>-->
+
+    
+
+    <!-- Sleek Curved Half-Screen Blue Overlay -->
+<!-- <div class="half-curved-overlay">
+  <svg viewBox="0 0 100 100" class="half-curved-shape" preserveAspectRatio="none">
+    <path d="M0,0 H70 Q100,50 70,100 H0 Z" fill="rgba(0, 66, 139, 0.60)" />
+  </svg>
+  <div class="curved-overlay-text text-white">
+    <h1 class="fw-bold m-0" style="font-family:'Times New Roman', Times, serif;">PEOPLE<br>WHO<br>BUILD</h1>
+  </div>
+</div>     -->
+
+
+
+
+<!-- Inside your banner container -->
+<svg class="curved-line" viewBox="0 0 1440 150" preserveAspectRatio="none">
+  <path d="M0,100 C480,0 960,200 1440,100" fill="none" stroke="#cdd9e7ce" stroke-width="3.5"/>
+</svg>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+  <!-- HERO SECTION -->
+   <!-- align-items-center  ---   this will make the content in center      -->
+  <div class="row hero-section" style="max-height: 60%">
+    <div class="col-lg-5 g-0 hero-text">
+      <p>Welcome to AceBuild Group</p>
+      <p style="font-size:medium;font-family: system-ui; font-weight: 300; text-align: justify; margin: 20px;">
+       We specialise in architecturally designed residential projects, encompassing new builds, renovations, and extensions. Our approach is founded on collaboration, working closely with architects, designers, and clients to bring visionary concepts to life.
+      <br><br>  We create architecturally designed homes through an effective culture of teamwork and collaboration. By pursuing perfection, we continuously innovate our business to build better homes.
+       <br> <br>Working with some of the best architects and designers in Sydney, AceBuid is a Sydney based construction company who specialise in building bespoke architectural homes. Driven by an unwavering commitment to excellence, we produce builds that are to the highest standard, with an emphasis on collaboration and detail.
+    </p>
+      <div style="text-align: center;">
+        <a href="projects.html"><button class="btn btn-dark-rounded" style="padding: 2.6% 13%;">Learn More</button></a>
+      </div>
+    </div>
+    <div class="col-lg-7 g-4 align-items-center ">
+      <img src="1.jpg" style="height: 70%;" class="img-fluid w-100 img_color" alt="Construction Image">
+    </div>
+  </div>
+
+
+
+
+
+  <!--
+
+  <div class = "row align-items-center">
+      <div class="col-lg-7 g-5">
+        <dotlottie-player src="https://lottie.host/74deb949-4dee-4a96-9c1e-11257da284d2/5IYaHpA27D.lottie" background="transparent" speed="1" style="width: 90%" loop autoplay></dotlottie-player>
+      </div>
+    <div class = "col-lg-5 g-4 hero-text">
+      <p>PEOPLE WHO BUILD</p>
+      <p style="font-size:medium;font-family: system-ui; font-weight: 300; text-align: justify; margin: 20px;">
+       We create architecturally designed homes through an effective culture of teamwork and collaboration. By pursuing perfection, we continuously innovate our business to build better homes.
+        </p>
+  
+
+<a href="mailto:info@acebuild.com.au?subject=Enquiry%20from%20Website" class="btn btn-dark-rounded" style="padding: 2.6% 13%; ">
+   Contact Us
+</a>
+      </div>
+    </div>
+
+
+</div>
+<br> <br>  -->
+
+
+
+
+
+
+
+<!-- POP UPPPPPPPPPPPpp
+
+<div class="modal fade" id="contactModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered slide-up-modal">
+    <div class="modal-content contact-modal-bg rounded-modal" style="height: 92vh;">
+      
+
+      <div class="modal-header border-0">
+        <h5 class="modal-title text-white" style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: 300; letter-spacing: 1.4px;" >Contact Us</h5>
+        <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+
+      </div>
+
+      <div class="modal-body d-flex justify-content-center align-items-center">
+        <div class="contact-box text-center text-white p-4">
+          <p style="font-size:medium;font-family: system-ui; font-weight: 300; text-align: justify; margin: 20px;">Ready to bring your dream house to life...</p>
+          <hr class="bg-white">
+          <a href="contact.html">
+            <button class="btn btn-dark-rounded mt-3">Connect with us</button>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      const modal = new bootstrap.Modal(document.getElementById("contactModal"));
+      modal.show();
+    }, 5000);
+  });
+</script>
+
+-->
+
+
+
+
+
+
+<!-- FOOTER -->
+<footer class="text-white pt-5 pb-4" style="background-color: #1a1a1aea;">
+  <div class="container text-center text-md-start">
+    <div class="row text-center text-md-start">
+
+      <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+        <h5 class="text-uppercase mb-4 font-weight-bold">ACE BUILD</h5>
+        <p style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: 300;">
+          Crafting structures with precision. Building trust that lasts a lifetime.
+        </p>
+      </div>
+
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+        <h5 class="text-uppercase mb-4 font-weight-bold">Quick Links</h5>
+        <p><a href="about.html" class="text-white" style="text-decoration: none;">About</a></p>
+        <p><a href="services.html" class="text-white" style="text-decoration: none;">Services</a></p>
+        <p><a href="projects.html" class="text-white" style="text-decoration: none;">Recently Completed Projects</a></p>
+        <p><a href="contact.html" class="text-white" style="text-decoration: none;">Contact</a></p>
+      </div>
+
+    
+
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+        <h5 class="text-uppercase mb-4 font-weight-bold ">Contact</h5>
+        <p><i class="bi bi-house-fill me-2 "></i> Sydney, NSW Australia</p>
+        <p><i class="bi bi-envelope-fill me-2"></i> acebuild.com/au</p>
+      </div>
+
+    </div>
+
+    <hr class="mb-4" />
+
+    <div class="row align-items-center">
+      <div class="col-md-7 col-lg-8">
+        <p style="font-size:medium;font-family: system-ui; font-weight: 300; text-align: justify; margin: 20px;">© 2025 ACE BUILD. All rights reserved.</p>
+      </div>
+      <div class="col-md-5 col-lg-4">
+        <div class="text-center text-md-end">
+          <a href="#" class="text-white me-4"><i class="bi bi-facebook fs-3"></i></a>
+          <a href="#" class="text-white me-4"><i class="bi bi-instagram fs-3"></i></a>
+          <a href="#" class="text-white me-4"><i class="bi bi-linkedin fs-3"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<script>
+  window.addEventListener('scroll', function () {
+    const navbar = document.querySelector('.custom-navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+</script>
+
+ 
+ <!--
+  <script>
+    const products = [
+      { img: '1.jpg', name: 'Precision Build Services', price: '$25' },
+      { img: '1.jpg', name: '24/7 Support Hub', price: '$25' },
+      { img: '1.jpg', name: 'SafeGuard Pro', price: '$25' },
+      { img: '1.jpg', name: 'Heavy Lift Gear', price: '$30' },
+      { img: '1.jpg', name: 'SmartBuild AI', price: '$40' },
+      { img: '1.jpg', name: 'Eco Concrete Mix', price: '$20' },
+      { img: '1.jpg', name: 'Extra Mix One', price: '$22' },
+      { img: '1.jpg', name: 'Extra Mix Two', price: '$27' }
+    ];
+  
+    const track = document.getElementById('carousel-track');
+  
+    // Duplicate list for seamless scroll
+    const allProducts = [...products, ...products];
+  
+    allProducts.forEach(product => {
+      const card = document.createElement('div');
+      card.className = 'carousel-card';
+      card.innerHTML = `
+        <img src="${product.img}" alt="${product.name}">
+        <h5>${product.name}</h5>
+        <p>${product.price}</p>
+      `;
+      track.appendChild(card);
+    });
+  
+    let scrollPosition = 0;
+    const container = document.getElementById('carousel-container');
+  
+    function autoScroll() {
+      scrollPosition += 1;
+      if (scrollPosition >= track.scrollWidth / 2) {
+        scrollPosition = 0; // Reset to beginning for seamless loop
+      }
+      container.scrollLeft = scrollPosition;
+    }
+  
+    setInterval(autoScroll, 25); // Lower = faster scroll
+  
+    // Highlight center card
+    function checkActiveCard() {
+      const cards = document.querySelectorAll('.carousel-card');
+      const containerCenter = container.offsetLeft + container.offsetWidth / 2;
+  
+      
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.left + rect.width / 2;
+        const distance = Math.abs(containerCenter - cardCenter);
+        card.classList.toggle('active', distance < 100);
+      });
+    }
+  
+    setInterval(checkActiveCard, 100);
+  </script>
+-->
+
+<script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
